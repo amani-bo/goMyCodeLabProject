@@ -8,14 +8,14 @@ pipeline {
     stage('Building angular') {
       steps{
         script {
-          return docker.build("angular-app", "-f goMyCodeLabProject/angular-app/Dockerfile .")
+          return docker.build("angular-app", "-f angular-app/Dockerfile .")
         }
       }
     }
      stage('Building express') {
       steps{
         script {
-          return docker.build("express-server", "-f goMyCodeLabProject/express-server/Dockerfile .")
+          return docker.build("express-server", "-f express-server/Dockerfile .")
         }
       }
     }
