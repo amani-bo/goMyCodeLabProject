@@ -1,7 +1,7 @@
-FROM node:latest
+FROM node:10-alpine
 WORKDIR /app
 COPY package*.json ./
-COPY . .
 RUN npm install
-EXPOSE: 3000
+COPY . .
+EXPOSE 3000
 CMD ["node", "server.js"]
