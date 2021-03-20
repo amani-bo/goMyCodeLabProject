@@ -6,7 +6,7 @@ services:
 			context: angular-app
 			dockerfile: Dockerfile
 		ports:
-			- "4200:4200"
+			- "4200:80"
 		volumes:
 			- ./angular-app:/app
 	express-server:
@@ -24,9 +24,9 @@ services:
 		ports:
 			- "27017:27017"
 		volumes:
-			- ./mongo-volume:/data/db
+			- mongo-volume:/data/db
 		environment:
 			MONGO_INITDB_ROOT_PASSWORD: 1234
 			MONGO_INITDB_ROOT_USERNAME: root
 volumes:
-	./mongo-volume:
+	mongo-volume:
