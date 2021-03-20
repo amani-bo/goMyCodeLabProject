@@ -1,33 +1,32 @@
 version: '3.0'
 services:
-
-  	angular-app:
-
-         	container_name: angular_container
-         	build: angular-app
-                	dockerfile: Dockerfile
+	angular-app:
+		container_name: angular_container
+		build:
+			context: angular-app
+			dockerfile: Dockerfile
 		ports:
 			- "4200:4200"
 		volumes:
 			- ./angular-app:/app
-  	express-server:
-         	container_name: express_container
-         	build: express-server
-                	dockerfile: Dockerfile
+	express-server:
+		container_name: express_container
+		build:
+			context: express-server
+			dockerfile: Dockerfile
 		ports:
 			- "3000:3000"
 		links:
 			- database
-
-  	database:
-         	image: mongo
-         	container_name: mongo_container
+	database:
+		image: mongo
+		container_name: mongo_container
 		ports:
 			- "27017:27017"
-         	volumes:
-                	- ./mongo-volume:/data/db
-         	environment:
-                	MONGO_INITDB_ROOT_PASSWORD: 1234
-                	MONGO_INITDB_ROOT_USERNAME: root
+		volumes:
+			- ./mongo-volume:/data/db
+		environment:
+			MONGO_INITDB_ROOT_PASSWORD: 1234
+			MONGO_INITDB_ROOT_USERNAME: root
 volumes:
-  	./mongo-volume:
+	./mongo-volume:
