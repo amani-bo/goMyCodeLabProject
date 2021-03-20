@@ -1,9 +1,9 @@
 FROM node:latest AS node
 WORKDIR /app
 COPY package*.json ./
-COPY . .
 RUN npm install 
+COPY . .
 RUN npm run build --prod
 
 FROM nginx:alpine
-COPY --from=node /app/dist/angular-app /usr/share/nginx/html
+COPY --from=node dist /usr/share/nginx/html
