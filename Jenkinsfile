@@ -1,10 +1,11 @@
 pipeline {
+  agent any
   environment {
     registry = "amanibo/goMyCodeLabProject"
     registryCredential = 'dockerhub'
     HOME = '.'
   }
-  agent any
+  
   stages {
     stage('Building angular') {
       steps{
