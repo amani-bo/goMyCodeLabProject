@@ -10,7 +10,7 @@ pipeline {
     stage('Building angular') {
       steps{
         script {
-          return docker.build("angular-app", "-f angular-app/Dockerfile .")
+          return docker.build("angular-app", "-f angular-app/Dockerfile ")
         }
       }
     }
