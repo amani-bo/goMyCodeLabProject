@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "amani-bo/goMyCodeLabProject"
+    registry = "amanibo/goMyCodeLabProject"
     registryCredential = 'dockerhub'
   }
   agent any
