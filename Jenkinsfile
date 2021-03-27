@@ -37,7 +37,7 @@ pipeline {
     stage('Deploy Express') {
       steps{
         script {
-           docker.withRegistry( registryback , registryCredential ) {
+           docker.withRegistry( '' , registryCredential ) {
            dockerExpressImage.push()
            }
         }
