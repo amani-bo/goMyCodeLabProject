@@ -1,11 +1,8 @@
 pipeline {
   agent any
   environment {
-    registry = "amanibo/gomycodelabproject"
-    registryCredential = 'dockerhub'
     dockerAngularImage = ''
     dockerExpressImage = ''
-    HOME = '.'
     
   }
   
@@ -20,14 +17,14 @@ pipeline {
      stage('Building express') {
       steps{
         script {
-          return docker.build("express-server", "-f express-server/Dockerfile express-server/")
+          dockerExpressImage = docker.build("express-server", "-f express-server/Dockerfile express-server/")
         }
       }
     }
     stage('Deploy Angular') {
       steps{
         script {
-           docker.withRegistry( 'https://registry.hub.docker.com', dockerhub ) {
+           docker.withRegistry( 'amanibo/angularproject', dockerhub ) {
            dockerAngularImage.push()
            }
         }
@@ -37,7 +34,7 @@ pipeline {
     stage('Deploy Express') {
       steps{
         script {
-           docker.withRegistry( 'https://registry.hub.docker.com', dockerhub ) {
+           docker.withRegistry( 'amanibo/expressproject', dockerhub ) {
            dockerExpressImage.push()
            }
         }
