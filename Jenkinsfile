@@ -38,7 +38,6 @@ pipeline {
       steps{
         script {
            docker.withRegistry( registryback , registryCredential ) {
-             #je dois enlever les '' psk se sont des variables et je les ai déclaré en haut
            dockerExpressImage.push()
            }
         }
