@@ -27,7 +27,7 @@ pipeline {
     stage('Deploy Angular') {
       steps{
         script {
-           docker.withRegistry( registryfront , registryCredential ) {
+           docker.withRegistry( '' , registryCredential ) {
            dockerAngularImage.push()
            }
         }
