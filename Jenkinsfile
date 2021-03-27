@@ -13,14 +13,14 @@ pipeline {
     stage('Building angular') {
       steps{
         script {
-          dockerAngularImage = docker.build("angular-app", "-f angular-app/Dockerfile angular-app/")
+          dockerAngularImage = docker.build("registryfront", "-f angular-app/Dockerfile angular-app/")
         }
       }
     }
      stage('Building express') {
       steps{
         script {
-          dockerExpressImage = docker.build("express-server", "-f express-server/Dockerfile express-server/")
+          dockerExpressImage = docker.build("registryback", "-f express-server/Dockerfile express-server/")
         }
       }
     }
