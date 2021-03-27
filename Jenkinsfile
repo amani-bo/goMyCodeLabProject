@@ -27,7 +27,7 @@ pipeline {
     stage('Deploy Angular') {
       steps{
         script {
-           docker.withRegistry( 'registryfront', dockerhub ) {
+           docker.withRegistry( registryfront , registryCredential ) {
            dockerAngularImage.push()
            }
         }
@@ -37,7 +37,8 @@ pipeline {
     stage('Deploy Express') {
       steps{
         script {
-           docker.withRegistry( 'registryback', dockerhub ) {
+           docker.withRegistry( registryback , registryCredential ) {
+             #je dois enlever les '' psk se sont des variables et je les ai déclaré en haut
            dockerExpressImage.push()
            }
         }
