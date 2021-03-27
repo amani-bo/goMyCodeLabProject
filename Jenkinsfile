@@ -1,6 +1,9 @@
 pipeline {
   agent any
   environment {
+    registryfront = "amanibo/angularproject"
+    registryback = "amanibo/expressproject"
+    registryCredential = 'dockerhub'
     dockerAngularImage = ''
     dockerExpressImage = ''
     
@@ -24,7 +27,7 @@ pipeline {
     stage('Deploy Angular') {
       steps{
         script {
-           docker.withRegistry( 'amanibo/angularproject', dockerhub ) {
+           docker.withRegistry( 'registryfront', dockerhub ) {
            dockerAngularImage.push()
            }
         }
@@ -34,7 +37,7 @@ pipeline {
     stage('Deploy Express') {
       steps{
         script {
-           docker.withRegistry( 'amanibo/expressproject', dockerhub ) {
+           docker.withRegistry( 'registryback', dockerhub ) {
            dockerExpressImage.push()
            }
         }
