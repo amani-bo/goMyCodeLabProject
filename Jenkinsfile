@@ -17,7 +17,7 @@ pipeline {
      stage('Building express') {
       steps{
         script {
-          return docker.build("express-server", "-f express-server/Dockerfile .")
+          return docker.build("express-server", "-f express-server/Dockerfile express-server/")
         }
       }
     }
